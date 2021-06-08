@@ -15,11 +15,10 @@
   + 오버로드 함수를 구현하면 사용자가 골라 쓸 수 있다.
 
 
++ 기본함수
 
-  + 기본함수
 
-
-  **printList(list);**
+**printList(list);**
   ```java
   static void printList(ExamList list){
     //(생략)
@@ -28,10 +27,10 @@
  
  
  
-  + 오버로드 함수
++ 오버로드 함수
  
 
-  **printList(list,3);**
+**printList(list,3);**
   ```java
   static void printList(ExamList list, int size){
     //(생략)
