@@ -27,7 +27,7 @@
 ```java
 public static void main(String[] args){
   ExamList list = new ExamList();
-  ExamList.inputList(list);
+  🔸ExamList.inputList(list);
 }
 ```
 🔻🔻🔻
@@ -46,7 +46,7 @@ class ExamList
 ```java
 public static void main(String[] args){
   ExamList list = new ExamList();
-  list.inputList();
+  🔸list.inputList();
 }
 ```
 🔻🔻🔻
