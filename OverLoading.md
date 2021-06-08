@@ -16,31 +16,31 @@
 
 
 
-+ 기본함수
+  + 기본함수
 
 
-**printList(list);**
-```java
-static void printList(ExamList list){
-  //(생략)
- }
- ```
+  **printList(list);**
+  ```java
+  static void printList(ExamList list){
+    //(생략)
+  }
+  ```
  
  
  
- + 오버로드 함수
+  + 오버로드 함수
  
 
-**printList(list,3);**
- ```java
-static void printList(ExamList list, int size){
-  //(생략)
- }
- ```
+  **printList(list,3);**
+  ```java
+  static void printList(ExamList list, int size){
+    //(생략)
+  }
+  ```
  
-**printList(list,1,3);**
-```java
-static void printList(ExamList list, int offset, int size){
-  //(생략)
- }
- ```
+  **printList(list,1,3);**
+  ```java
+  static void printList(ExamList list, int offset, int size){
+    //(생략)
+  }
+  ```
