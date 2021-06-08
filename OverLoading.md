@@ -1,5 +1,7 @@
 + 함수 오버로드 : 기존의 함수에 똑같은 함수를 또 만드는것 
 
+
+
 + 오버로드 함수
 
   + ***같은 기능 하지만 다른 추가 인자를 가지는 함수***
@@ -12,7 +14,10 @@
 
   + 오버로드 함수를 구현하면 사용자가 골라 쓸 수 있다.
 
+
+
 + 기본함수
+
 
 **printList(list);**
 ```java
@@ -21,8 +26,11 @@ static void printList(ExamList list){
  }
  ```
  
+ 
+ 
  + 오버로드 함수
  
+
 **printList(list,3);**
  ```java
 static void printList(ExamList list, int size){
