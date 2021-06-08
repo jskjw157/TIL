@@ -20,10 +20,17 @@
 > 
 > + 캡슐화: 데이터 구조와 함수를 하나의 영역에 함께 모아 놓는 작업
 
-+ instance method : 인스턴스 객체를 통해서 호출되고, 묵시적으로 객체를 넘겨받는 함수
+***
 
 + static method : 고전적인 함수로 모든값을 파라미터를 통해서 넘겨 받고 일반적인 함수와 같은 의미로 사용하는 함수
 
+```java
+public static void main(String[] args){
+  ExamList list = new ExamList();
+  ExamList.inputList(list);
+}
+```
+🔻🔻🔻
 ```java
 class ExamList
 {
@@ -33,6 +40,16 @@ class ExamList
   }
 }
 ```
+
++ instance method : 인스턴스 객체를 통해서 호출되고, 묵시적으로 객체를 넘겨받는 함수
+
+```java
+public static void main(String[] args){
+  ExamList list = new ExamList();
+  list.inputList();
+}
+```
+🔻🔻🔻
 ```java
 class ExamList
 {
@@ -42,16 +59,4 @@ class ExamList
   }
 }
 ```
-```java
-public static void main(String[] args){
-  ExamList list = new ExamList();
-  **ExamList.inputList(list);**
-}
-```
-```java
-public static void main(String[] args){
-  ExamList list = new ExamList();
-  **list.inputList();**
-}
-```
-
+  함수를 정의하는 부분에서 static과 파라미터가 없다.
