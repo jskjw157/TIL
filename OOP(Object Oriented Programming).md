@@ -55,8 +55,9 @@ class ExamList
 {
   public void inputList()
   {
-    list.exams[list.current] = new Exam();
+    this.exams[this.current] = new Exam();
   }
 }
 ```
-  함수를 정의하는 부분에서 static과 파라미터가 없다.
+  함수를 정의하는 부분에서 static과 파라미터가 없고, 파라미터 대신 this로 작성한다.(this는 생략 가능)
+
