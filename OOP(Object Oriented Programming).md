@@ -71,6 +71,7 @@ class ExamList
 }
 ```
   함수를 정의하는 부분에서 static과 파라미터가 없고, 파라미터 대신 this로 작성한다.(this는 생략 가능)
+
 <br/>
 
 ***
@@ -86,7 +87,7 @@ class ExamList
 public class ExamList {
  
  private Exam[] exams;
-	private int current;
+ private int current;
  
  public void printList() {
  //(생략)
