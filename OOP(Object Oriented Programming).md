@@ -81,8 +81,11 @@ class ExamList
 <br/>
 
 + 접근 제한자 : 캠슐을 꺠지 못하게 하는 도구(클래스내의 데이터구조와 함수를 외부에서 접근하지 못하게 하는 것)
+  
   + private   : 동일 클래스 O, 파생 클래스 X, 외부 클래스 X
+  
   + protected : 동일 클래스 O, 파생 클래스 O, 외부 클래스 X
+  
   + public    : 동일 클래스 O, 파생 클래스 X, 외부 클래스 O
 <br/>
 
@@ -115,7 +118,7 @@ public class ExamList {
 + 객체의 초기화 : 처음에 객체를 생성할 떄, 변수의 공간에 가지고 있어야 할 기본적인 값을 넣어줌
 <br/>
 
-+ 생성자 : 객체의 초기화(객체의 실체화)를 위한 특별한 함수
++ 생성자 : 객체의 초기화를 위한 특별한 함수
   
   + new ExamList(); = new ExamList {객체의 실체화} + (); {앞에서 만들어진 객체를 초기화 하는 생성자를 호출}
   
@@ -143,5 +146,26 @@ class ExamList{
  
 }
 ```
+<br/>
 
++ 생성자의 오버로드(기본 생성자에서 오버로드 생성자를 호출 할 떄, 생성자는 객체가 생성 될 떄 호출 할 수 있으므로, 기존의 생성자가 넘겨받은 객체 this를 통해서 호출한다. )
 
+```java
+class ExamList(){
+	
+	private Exam[] exams
+	private int current;
+	
+	public ExamList(){
+		this(3);
+	}
+	
+	public ExamList(int size){
+		exams = new Exam[size];
+		current = 0;
+	}
+}
+```
+<br/>
+
++ 생성자를 하나도 정의하지 않는다면? 컴파일러가 컴파일 할 떄, 기본 생성자를 스스로 만든다. 참조 변수가 실체화 될 경우 null, 값 변수가 실체화 될 경우에는 0으로 초기화 한다.
