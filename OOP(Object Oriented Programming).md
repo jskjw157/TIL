@@ -271,7 +271,7 @@ exam.setKor(scan.nextInt());
 	+ Composition(구성요소) Has A : 캡슐이 생성될 떄, 필요로하는 객체를 한번에 다 갖고있는 형태
 
 	+ Aggregation(집합) Has A : 필요할때마다 객체를 수시로 모집해서 집합적으로 갖고있는 형태
-
+<br/>
 	
 + dependancy(의존) : 함수내에서 일시적으로 생성해서 사용했다가 제거하는 의존객체 ex) Scanner 함수
 
