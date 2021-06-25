@@ -281,4 +281,15 @@ exam.setKor(scan.nextInt());
 <br/>
 
 + 재사용
+
 	+ 재사용이란 소스코드를 재사용 하는게 아닌, 배포 코드를 재사용 하는 것을 의미한다.
+<br/>
+
++ 코드 배포 과정
+	
+	1. 컴파일 -> Exam.class
+	
+	2. 압축 -> Exam.zip
+	
+	3. jar(java archive = java class파일을 압축한 형태) -> Exam.jar
+<
