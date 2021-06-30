@@ -294,6 +294,17 @@ exam.setKor(scan.nextInt());
 	3. jar(java archive = java class파일을 압축한 형태) -> Exam.jar
 <br/>
 
-+ 이클립스에서 프로젝트 배포 파일 만들기
-+ 프로젝트선택 > export > java > JAR file > 클래스파일 선택 > browse 눌러서 저장경로 설정 > 확장자를 jar로 지정 > Finish
-+ bulid path  > configure Build Path > Libraries >  > Add External JARs 선택
++ 이클립스 프로젝트 배포 파일 생성하는 방법
+
+	+ 프로젝트 선택 > export > java > JAR file > 클래스파일 선택 > browse 눌러서 저장경로 설정 > 확장자를 jar로 지정 > Finish
+<br/>
+
++ 배포 파일(라이브러리) Classpath 지정하는 방법
+
+	+ 프로젝트 선택 > bulid path > Configure Build Path > Libraries > Classpath > Add External JARs 선택 > Apply and Close
+<br/>
+
+***
+
+<br/>
+
