@@ -1,4 +1,4 @@
- ## 객체지향 프로그래밍
+ # 객체지향 프로그래밍
  <br/>
  
  + oop의 기본 컨셉은 프로그램 내에서 표현하고자 하는 **실 세계의 일들을 객체를 사용해서 모델링 하고** , 
@@ -38,7 +38,7 @@
 
 <br/>
 
-## static method와 instance method
+# static method와 instance method
 <br/>
 
 + static method : 고전적인 함수로 모든값을 파라미터를 통해서 넘겨 받고 일반적인 함수와 같은 의미로 사용하는 함수
