@@ -24,6 +24,9 @@
  > 	>
  > 	> [8. IS A 상속](#IS-A-상속)
  > 	> <br/>
+ > 	>
+ > 	> [9. Override](#Override)
+ > 	> <br/>
 <br/>
  
  
@@ -301,26 +304,31 @@ exam.setKor(scan.nextInt());
 ### Has A 상속
 <br/>
 
-+ UI 코드의 분리
-	
-	+ 입력하는 방법과 출력하는 방법의 코드는 어떤 UI(콘솔, 윈도우, 웹, 모바일)를 쓰느냐에 따라 달라지게 되어 있다.
-<br/>
-
 + 캡슐들은 서로를 사용하거나 사용되는 관계를 가지고 있다.
 <br/>
 
-+ Has A 상속
++ 부품으로 물려받은 상속(캡슐이 구현해야 할 기능을 구현할 떄, 도구로 사용할 수 있는 형태의 부품으로서 갖는다.)
+<br/>
 
-	+ 부품으로 물려받은 상속(캡슐이 구현해야 할 기능을 구현할 떄, 도구로 사용할 수 있는 형태의 부품으로서 갖는다.)
-	
-	+ 캡슐이 다른 캡슐의 객체를 부품으로 가지고 있는 상태로, 기능을 사용할 수 있는 상속
++ 캡슐이 다른 캡슐의 객체를 부품으로 가지고 있는 상태로, 기능을 사용할 수 있는 상속
+<br/>
 
-	+ Composition(구성요소) Has A : 캡슐이 생성될 떄, 필요로하는 객체를 한번에 다 갖고있는 형태
++ Composition(구성요소) Has A : 캡슐이 생성될 떄, 필요로하는 객체를 한번에 다 갖고있는 형태
+<br/>
 
-	+ Aggregation(집합) Has A : 필요할때마다 객체를 수시로 모집해서 집합적으로 갖고있는 형태
++ Aggregation(집합) Has A : 필요할때마다 객체를 수시로 모집해서 집합적으로 갖고있는 형태
+<br/>
+
+#### UI 코드의 분리
+<br/>
+
++ 입력하는 방법과 출력하는 방법의 코드는 어떤 UI(콘솔, 윈도우, 웹, 모바일)를 쓰느냐에 따라 달라지게 되어 있다.
 <br/>
 	
-+ dependancy(의존) : 함수내에서 일시적으로 생성해서 사용했다가 제거하는 의존객체 ex) Scanner 함수
+#### dependancy(의존)
+<br/>
+
++ 함수내에서 일시적으로 생성해서 사용했다가 제거하는 의존객체 ex) Scanner 함수
 <br/>
 
 ***
@@ -381,17 +389,82 @@ exam.setKor(scan.nextInt());
 <br/>
 
 + 상속을 받은 클래스를 객체화 할떄, 상속을 해주는 부모 클래스의 객체들을 가진다.
+<br/>
 
 + instance method 호출시 객체를 넘겨받을떄, 묵시적으로 넘겨받은 객체는 this, 그 중에 상속받은 객체만 지명하는 이름은 super 이다.
+<br/>
 
 + 상속받은 객체가 method를 호출할 떄, 기존 클래스내에 해당 method가 없으면, 차선책으로 부모 클래스의 method를 호출 한다.(하지만, 부모클래스의 method는 해당 영역에 정의된 변수만 사용한다.)
+<br/>
 
 + Override method : 부모 method 보다 우선순위가 높고, 부모가 갖고 있는 기능을 가리고 method 내용을 재정의하는 함수.
+<br/>
 
 + Override method는 부모 method와 함수명, 반환타입, 매개변수가 동일해야 된다.
 
-+ 자식클래스에서  객체를 초기화할떄(생성자), 오버로드 생성자에서 초기화해야되는 내용이  부모 클래스의 것이라면 부모생성자를 호출한다(super()).
 ```java
+
+public class Exam {
+	int kor;
+	int eng;
+	int math;
+
+	public int total() {
+		
+		return  eng+kor+math;
+	}
+
+	public float avg() {
+		
+		return total()/3.0f;
+	}
+}
+
+
+public class NewlecExam extends Exam {
+
+	private int com;
+	
+	@Override
+	public int total() {
+		
+		return super.total()+com;
+	}
+	
+	@Override
+	public float avg() {
+		
+		return total()/4.0f;
+	}
+	
+}
+```
+<br/>
+
+#### 자식 클래스의 객체 초기화
+<br/>
+
++ 자식 클래스에서 객체를 초기화 할 떄(자식 생성자),  초기화해야되는 내용 일부분이 부모객체이면, 부모의 기능(부모 생성자)으로 초기화 한다.(super())
+
+```java
+
+public class Exam {
+	int kor;
+	int eng;
+	int math;
+	
+	public Exam() {
+		this(0,0,0);
+	}
+	
+	public Exam(int kor, int eng, int math) {
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+	}
+}
+
+
 public class NewlecExam extends Exam {
 
 	private int com;
@@ -402,6 +475,14 @@ public class NewlecExam extends Exam {
 	
 	public NewlecExam(int kor, int eng, int math, int com) {
 		
-		super(kor,eng,math);
+		🔸super(kor,eng,math);
+	
 		this.com =com;
 	}
+}
+```
+<br/>
+
+***
+
+<br/>
