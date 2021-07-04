@@ -361,7 +361,7 @@ exam.setKor(scan.nextInt());
 ### IS A 상속
 <br/>
 
-+ 부품이 아닌 틀(프레임)로 가져다가 사용하는 상속
++ 부품이 아닌 틀(Framework)로 가져다가 사용하는 상속
 <br/>
 
 + 틀(Framework)를 그대로 사용하기 때문에, 생산성이 높아지고 비용도 절감된다.
@@ -372,3 +372,36 @@ exam.setKor(scan.nextInt());
 
 + 최근에는 발전속도가 빨라서, 서비스를 프레임워크 없이 다 개발하기는 어렵고, 90%정도 프레임워크를 사용하고, 나머지 10%를 개발하는 추세이다.
 <br/>
+
+***
+
+<br/>
+
+### Override
+<br/>
+
++ 상속을 받은 클래스를 객체화 할떄, 상속을 해주는 부모 클래스의 객체들을 가진다.
+
++ instance method 호출시 객체를 넘겨받을떄, 묵시적으로 넘겨받은 객체는 this, 그 중에 상속받은 객체만 지명하는 이름은 super 이다.
+
++ 상속받은 객체가 method를 호출할 떄, 기존 클래스내에 해당 method가 없으면, 차선책으로 부모 클래스의 method를 호출 한다.(하지만, 부모클래스의 method는 해당 영역에 정의된 변수만 사용한다.)
+
++ Override method : 부모 method 보다 우선순위가 높고, 부모가 갖고 있는 기능을 가리고 method 내용을 재정의하는 함수.
+
++ Override method는 부모 method와 함수명, 반환타입, 매개변수가 동일해야 된다.
+
++ 자식클래스에서  객체를 초기화할떄(생성자), 오버로드 생성자에서 초기화해야되는 내용이  부모 클래스의 것이라면 부모생성자를 호출한다(super()).
+```java
+public class NewlecExam extends Exam {
+
+	private int com;
+
+	public NewlecExam() {
+		this(0,0,0,0);
+	}
+	
+	public NewlecExam(int kor, int eng, int math, int com) {
+		
+		super(kor,eng,math);
+		this.com =com;
+	}
