@@ -486,3 +486,76 @@ public class NewlecExam extends Exam {
 ***
 
 <br/>
+
+### 참조형식과 호출되는 메소드의 관계
+<br/>
+
+```JAVA
+NewlecExam exam = new Exam(); // X
+```
+```JAVA
+Exam exam = new NewlecExam(); // O
+```
+WHY? 참조 형식보다 객체 생성 형식의 객체가 더 커야 되기 떄문이다. 
+
+
+객체를 생성할떄, 부모 참조 형식과 자식 객체 생성 형식이면, 참조 형식과 객체 생성 형식 2가지를 참조한다.
+<br/>
+
+
++ 자바는 참조형식의 함수보다 객체 생성 형식의 함수 호출을 우선으로 한다.
+```java
+class exam {
+
+	public void total() {
+		return kor + eng + math;
+	}
+}
+
+class NewlecExam extends Exam {
+	
+	public noid total() {
+		return kor + eng + math + com;
+	}
+}
+```
+
+```java
+NewlecExam exam1 = new NewlecExam(1,1,1,1); // 참조형식 : NewlecExam, 객체형식 : NewlecExam
+system.out.println(exam1.total());
+```
+출력 : 4
+
+```java
+Exam exam2 = new NewlecExam(1,1,1,1); // 참조형식 : Exam, 객체형식 : NewlecExam
+system.out.println(exam2.total());
+```
+출력 : 4
+<br/>
+
++ 침조 형식이 가지고 있는 메소드에 한해서 오버라이딩 메소드를 호출 할 수 있으며, 가지고 있지 않으면 아예 호출이 불가능하다.
+```java
+class exam {
+
+	// 없음
+}
+
+class NewlecExam extends Exam {
+	
+	public noid total() {
+		return kor + eng + math + com;
+	}
+}
+```
+
+```java
+NewlecExam exam1 = new NewlecExam(1,1,1,1); // 참조형식 : NewlecExam, 객체형식 : NewlecExam
+system.out.println(exam1.total());
+```
+출력 : 4
+
+```java
+Exam exam2 = new NewlecExam(1,1,1,1); // 참조형식 : Exam, 객체형식 : NewlecExam
+system.out.println(exam2.total());
+```
+출력 : 오류
