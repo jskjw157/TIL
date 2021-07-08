@@ -496,10 +496,10 @@ NewlecExam exam = new Exam(); // X
 ```JAVA
 Exam exam = new NewlecExam(); // O
 ```
-WHY? 참조 형식보다 객체 생성 형식의 객체가 더 커야 되기 떄문이다. 
++ WHY? 참조 형식보다 객체 생성 형식의 객체가 더 커야 되기 떄문이다. 
 
 
-객체를 생성할떄, 부모 참조 형식과 자식 객체 생성 형식이면, 참조 형식과 객체 생성 형식 2가지를 참조한다.
++ 객체를 생성할떄, 부모 참조 형식과 자식 객체 생성 형식이면, 참조 형식과 객체 생성 형식 2가지를 참조한다.
 
 <br/>
 
@@ -561,14 +561,18 @@ Exam exam2 = new NewlecExam(1,1,1,1); // 참조형식 : Exam, 객체형식 : New
 system.out.println(exam2.total());
 ```
 출력 : 오류
+
 <br/>
 
 해결방안 :
 ```java
 Exam exam2 = new NewlecExam(1,1,1,1); // 참조형식 : Exam, 객체형식 : NewlecExam
-system.out.println((NewlecExam(exam2)).total()); // (NewlecExam(exam2)).total()에서 (NewlecExam(exam2)) 괄호를 밖에 더두르는 이유는 형 변환하는 NewlecExam(exam2)보다 .total()이 우선순위 이기 때문이다.
+system.out.println((NewlecExam(exam2)).total()); //
 ```
 출력 : 4
+
++ (NewlecExam(exam2)).total()에서 (NewlecExam(exam2)) 괄호를 밖에 더두르는 이유는 형 변환하는 NewlecExam(exam2)보다 .total()이 우선순위 이기 때문이다.
+
 <br/>
 
 ***
