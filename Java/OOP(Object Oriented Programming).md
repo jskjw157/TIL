@@ -578,3 +578,52 @@ system.out.println((NewlecExam(exam2)).total()); //
 ***
 
 <br/>
+
+### 메소드 동적 바인딩(함수 호출 위치 결정 방식 이해하기)
+<br/>
+
+```java
+class Exam {
+
+	public void total() {   // 함수 주소 : 2A3F
+		return kor + eng + math;
+	}
+}
+
+class NewlecExam extends Exam {
+	@Override
+	public void total() {    // 함수 주소 :7D3A
+		return super.total() + com;
+	}
+}
+
+public static void print(Exam exam) {
+	
+	int total = exam.total(); // total 메소드는 print메서드의 전달되는 파라미터 객체에 따라(Exam, NewlecExam) 호출되는 total 메소드가 다르다.
+	System.out.println(total);
+}
+
+public static void main(String args[]) {
+
+	print(new Exam(1,1,1)); // Exam 객체 전달
+	printf(new NewlecExam(1,1,1,1)); // NewlecExam객체 전달
+}
+```
+
+원래 컴파일러가 메소드를 해석할 경우, 함수가 있는 위치 주소를 적어서 그 위치로 가게 되어 있다.
+
+그 함수를 호출하는 메소드가 어떤객체를 파라미터로 받는냐에 따라서 호출되는 함수 위치가 달라진다.
+
+<br/>
+
++  정적 바인딩 : 참조 함수 주소를 참조 형식의 의한 결정, 컴파일 시점에 결정, 한번 컴파일되면 바뀌지 않는 함수 바인딩
+<br/>
+
++ 동적 바인딩 : 실행중에 함수의 위치가 결정되는 바인딩, 객체 전달 시점에서 함수 주소 위치를 결정 자바는 동적 바인딩
+
+	+ 동적 바인딩을 지원하기 위한 클래스, 객체들은 데이터를 담는 공간 외에, 추가적으로 **자기의 메서드 테이블을 가리키는 주소 번지 4byte 공간을 더 갖고 있다.**
+<br/>
+
+***
+
+<br/>
