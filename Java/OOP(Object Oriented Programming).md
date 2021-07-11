@@ -627,3 +627,68 @@ public static void main(String args[]) {
 ***
 
 <br/>
+
+### 코드 집중화와 추상화
+<br/>
+
++ 추상화 : 코드 집중화(X) > 서비스 집중화(캡슐 단위의 공통 서비스)
+<br/>
+
+**추상 클래스(공통 분모의 클래스)**
+
+|도형|
+|:---:|
+|+draw()|
+|+setX()|
+|+setY()|
+|+move()|
+<br/>
+
+🔻🔻🔻🔻
+
+<br/>
+
+|원|
+|:---:|
+|draw()|
+|setX()|
+|setY()|
+|move()|
+|setOrigin()|
+
+|네모|
+|:---:|
+|draw()|
+|setX()|
+|setY()|
+|move()|
+|setWidth()|
+
+|선|
+|:---:|
+|draw()|
+|setX()|
+|setY()|
+|move()|
+
+공통 서비스를 갖고 있는 클래스에 IS A 상속으로(틀로) 물려 받아 서비스를(코드) 구현할 필요가 없다.
+
+<br/>
+
++ 추상 클래스의 생성(공통 서비스화)으로 얻을 수 있는 장점
+
+	1. 코드 집중화
+	
+	2. 일괄 처리 (부모 추상 클래스로 배열을 만들어서 자식 클래스들을 한번에 참조시킬 수 있다.)
+	```java
+	Shape shapes = new Shape[10];
+	
+	shapes[0] = new Circle();
+	shapes[1] = new Rect();
+	shapes[2] = new Line();
+	
+	for(int...)
+		shapes[i].move();
+	```
+<br/>
+
