@@ -628,7 +628,7 @@ public static void main(String args[]) {
 
 <br/>
 
-### 코드 집중화와 추상화
+### 추상화
 <br/>
 
 + 추상화 : 코드 집중화(X) > 서비스 집중화(캡슐 단위의 공통 서비스)
@@ -671,7 +671,7 @@ public static void main(String args[]) {
 |setY()|
 |move()|
 
-공통 서비스를 갖고 있는 클래스에 IS A 상속으로(틀로) 물려 받아 서비스를(코드) 구현할 필요가 없다.
+공통 서비스를 갖고 있는추상 클래스에 IS A 상속으로(틀로) 물려 받아 서비스를(코드) 구현할 필요가 없다.
 
 <br/>
 
@@ -692,3 +692,11 @@ public static void main(String args[]) {
 	```
 <br/>
 
+#### 추상 클래스
+<br/>
+
++ 클래스가 뼈대로만 사용할 수 있도록 만든다. 즉 객체화 되는 것을 막는다. Ex) new Exam(); X
+<br/>
+
++ 클래스명 앞에 abstract를 붙이면 추상 클래스가 생성
+<br/>
