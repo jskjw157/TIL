@@ -129,3 +129,54 @@
 + 런타임에서 언제나 정의 할수있고, 인자로 보낼 수 있고, 내가 원하는 시점에 들고 다니다가 원할때 평가 할 수 있는 함수
 <br/>
 
+```javascript
+        /* 일급 함수 */
+        //변수에 함수가 담길 수 있다.
+        var f1 = function(a) { return a * a; };
+        console.log(f1);
+
+        var f2 = add;
+        console.log(f2);
+
+        //인자로 일급함수를 받을 수 있다.
+        function f3(f) {
+        return f();
+        }
+
+        console.log( f3(function() { return 10; }) );
+
+        console.log( f3(function() { return 20; }) );
+
+        /* add_maker */
+        // add_maker는 함수를 바로 값으로 리턴하고, 그 함수는 변수에 대입된다.
+        function add_maker(a) { // 일급함수(값으로 넘긴다.)
+        return function(b) { // 순수함수(외부에 있는 변수 a의 값을 참조하지만 변경하지는 않는다.)
+            return a + b; // a의 값을 기억하는 클로저함수(function(b))
+        }
+        }
+
+        var add10 = add_maker(10);
+
+        console.log( add10(20) ); //30
+
+        var add5 = add_maker(5);
+        var add15 = add_maker(15);
+
+        console.log( add5(10) );
+        console.log( add15(10) );
+
+        // 함수의 평가시점이 언제이든 같은 인자의 값을 입력했을때 같은 결과 값이 출력된다.
+        console.log( add10(20) ); // 30
+
+
+        function f4(f1,f2,f3) {
+            return f3(f1()+f2());
+            
+        }
+
+        console.log(f4(
+            function() {return2;},
+            function() {return3;},
+            function() {return a*a;}
+        ))
+```
