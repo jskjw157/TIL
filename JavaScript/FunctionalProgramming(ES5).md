@@ -343,6 +343,8 @@ console.log(
 
 ```javascript
 
+// each로 _map, _filter 중복 제거
+
 // each가 적용된 filter
 function _filter(list, predi) {
     var new_list = [];
@@ -362,7 +364,7 @@ function _map(list, mapper) {
     return new_list;
 }
 
-//for (var i = 0; i < list.length; i++)부분과 list[i]부분의 중복을 제거 해주는 함수
+//for (var i = 0; i < list.length; i++)부분과 list[i]부분의 중복을 제거 해주는 each 함수
 function _each(list, iter) {
     for (var i = 0; i < list.length; i++) {
         iter(list[i]);
@@ -370,3 +372,102 @@ function _each(list, iter) {
     return list;
 }
 ```
+<br/>
+
+***
+
+<br/>
+
+### 다형성 📚
+<br/>
+
+#### 외부 다형성 📕
+<br/>
+
++ 객체 지향 프로그래밍
+
+  + 객체지향 프로그래밍은 메소드가 해당하는 클래스에 준비되어 있지않은 메소드는 사용할 수 없다.
+  
+  + -> 다형성을 지원하기가 어렵다.
+
+  + 데이터가 먼저 나오는 프로그래밍은 데이터가 있어야 메소드가 생긴다.
+
+  +  객체지향은 평가의 순서가 더 중요하다. 반드시 해당하는 객체가 생겨야 기능을 수행한다
+<br/>
+
+```javascript
+
+//array 객체에 map과 filter 메소드가 정의 되어 있다.
+console.log(
+  [1, 2, 3, 4].map(function(val) {
+    return val * 2;
+  })
+);
+
+console.log(
+  [1, 2, 3, 4].filter(function(val) {
+    return val % 2;
+  })
+);
+```
+<br/>
+
+```javascript
+
+//document.querySelectorAll()의 실행 결과는 array가 아닌 array_like 객체
+console.log(document.querySelectorAll('*'));
+```
+<br/>
+
+```javascript
+
+//메소드는 해당클래스의 정의 되어 있기 때문에, 해당 클래스의 인스턴스가 아니면 사용할 수 없다.
+//array가 아닌 array_like 객체이기 때문에 map이라는 메소드가 준비 되어 있지 않다.
+// -> 실행결과 : 오류
+console.log(document.querySelectorAll('*').map(function(node){
+  return node.nodeName
+})
+);
+```
+<br/>
+
++ 함수형 프로그래밍
+
+  + 함수가 기준인 함수형 프로그래밍은 함수를 먼저 만들고 그 함수에 맞는 데이터를 구성해서 함수에 적용한다.
+
+  + -> 다형성이 높다. 유연하고 실용적이다.
+
+  + 함수가 먼저 나오는 프로그래밍은 데이터가 있기 전부터 함수가 있다.
+
+  + 함수 자체는 혼자 먼저 존재하기 때문에 데이터가 생기지 않더라도 평가시점이 상대적으로 유연하다.
+<br/>
+
+```javascript
+
+//querySelectorAll(array_like 객체)의 준비 되어있지 않은 Map(메소드)을 함수형 프로그래밍으로 전환해서 사용할 수 있다.
+//배열이 아니어도 length가 있고, length에 맞는 값들이 담겨저있는 key-value쌍의 객체라면 모두 동작이 가능하다.
+console.log(
+  _map(document.querySelectorAll('*'), function(node) {
+    return node.nodeName;
+  })
+);
+```
+<br/>
+
+#### 내부 다형성 📗
+<br/>
+
++ 내부의 다형성은 predi, iter, mapper 같은 보조함수가 책임을 진다.
+<br/>
+
++ 보조함수의 함수명은 실행하는 기능에 맞는 이름으로 한다.
+<br/>
+
++ 보조함수는 개발자가 넘기는 배열안에 어떤값이 들어있어도 다 수행 할수 있게 만드는 역할을 한다.
+
+  + -> 내부 다형성이 높아진다.
+<br/>
+
+***
+
+<br/>
