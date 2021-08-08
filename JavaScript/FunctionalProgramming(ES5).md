@@ -186,7 +186,7 @@
 
 <br/>
 
-### filter and map
+### filter and map ⏱
 <br/>
 
 + 함수형 프로그래밍은 값을 직접 변경하지 않고 변형된 새로운 값을 리턴한다.
@@ -338,7 +338,7 @@ console.log(
 
 <br/>
 
-### each
+### each ⏱
 <br/>
 
 ```javascript
