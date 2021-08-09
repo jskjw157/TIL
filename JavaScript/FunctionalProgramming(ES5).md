@@ -53,6 +53,7 @@
         console.log(add(10,5));
         console.log(add(10,5));
 
+        
         /*순수함수가 아닌 함수는 평가시점이 중요하다. c가 변경 되기 전인가 변경 된 후인가가 중요.
         
         순수함수는 평가시점에 따라 로직이 정해진다.*/
@@ -69,6 +70,8 @@
         console.log(add2(10,6));
         console.log(add2(10,7));
         
+        
+        
         /* 순수함수가 아닌 함수는 부수효과를 일으키는 함수. 
         
         부수 효과는 외부의 상태를 변경하는것 또는 들어온 인자의 상태를 집적 변경하는것.
@@ -84,6 +87,7 @@
         console.log(add3(20,30));
         console.log('c: ',c);
 
+        
         /* add4함수는 순수함수도 아니고, 리턴값도 없고, 실행하면 직접 인자로 들어온 값의 상태를 변경하는 함수
         */
         var obj1 = {val:10};
@@ -96,6 +100,7 @@
         console.log(obj1.val);
 
 
+         
          /* 다시 순수 함수
          
          객체를 다루는 순수 함수
@@ -155,7 +160,9 @@
 
         console.log( f3(function() { return 20; }) );
 
+        
         /* add_maker */
+        
         // add_maker는 함수를 바로 값으로 리턴하고, 그 함수는 변수에 대입된다.
         function add_maker(a) { // 일급함수(값으로 넘긴다.)
         return function(b) { // 순수함수(외부에 있는 변수 a의 값을 참조하지만 변경하지는 않는다.)
@@ -362,6 +369,7 @@ function _filter(list, predi) {
     });
     return new_list;
 }
+
 
 //  each가 적용된 map
 function _map(list, mapper) {
