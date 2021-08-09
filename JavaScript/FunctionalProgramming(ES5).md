@@ -589,3 +589,86 @@ console.log( sub10(5) ); // 결과 -5
 ```
 <br/>
 
+***
+
+<br/>
+
+### get ⏱
+<br/>
+
++ get 함수 : object에 있는 값이 null이 아닌지 확인해서, 그값을 안전하게 참조하는 함수.
+<br/>
+
+```javascript
+function _get(obj, key) {
+  return obj == null ? undefined : obj[key] ;
+}
+
+//정상 실행
+var user1 = users[0];
+console.log(user1.name);
+console.log(_get(user1,'name'));
+
+// undefined
+console.log(_get(user[10],'name'));
+
+// curryr을 적용한 get함수
+var _getr = _curryr( function(obj, key) {
+  return obj == null ? undefined : obj[key] ;
+});
+
+
+//정상 실행
+console.log(_get(user1,'name'));
+console.log(_getr('name')(user1));
+
+
+//객체에 상관 없이 key가 'name'인 vaule를 꺼내는 함수
+var get_name = _getr('name');
+
+
+//다른 객체를 넣어도 정상 동작한다.
+console.log(get_name(user1));
+console.log(get_name(users[3]));
+console.log(get_name(users[4]));
+
+console.log(
+  _map(
+    _filter(users, function(user) { return user.age >= 30; }),
+    _getr('name'))); // <- function(user){return user.name;}
+    
+
+/* _map 함수에서 _getr('name')인 인자가 실행되는 원리 */
+    
+function _curryr(fn) {
+  return function(a,b) {
+    return arguments.length == 2 ?  fn(a,b) : function(b){return fn(b,a);};
+  } 
+} function(a,b)인 _getr('name') 에서 받아오는 인자가 하나이기때문에 function(b){return fn(b,a);};가 실행되므로  
+fn(b,a)에 _get함수인 function(obj, key) {return obj == null ? undefined : obj[key] ;}가 대입
+
+-> function(b){return function(key, obj) {return obj == null ? undefined : obj[key] ;};} 
+
+
+function _map(list, mapper) {
+  var new_list = [];
+  _each(list, function(val){
+    new_list.push(mapper(val));
+  });
+  return new_list;
+} map 함수에서 mapper 값에 _getr('name')함수를 대입, 그 후 each함수의 function(val){new_list.push(mapper(val));}인자 에서 mapper안에 대입되서 실행
+    
+-> _each(list, function(val){ new_list.push(function(b){return function(obj, key) {return obj == null ? undefined : obj[key] ;};});})
+
+
+function _each(list, iter) {
+ for (var i = 0; i < list.length; i++) {
+   iter(list[i]);
+  }
+ return list;
+} 에서 다시 iter함수에 대입 되고, iter에 list[i]를 인자로 받아 실행
+    
+->
+for (var i = 0; i < list.length; i++) {
+  function(list[i]){ new_list.push(function(b){return function(obj, key) {return obj == null ? undefined : obj[key] ;};});}
+} 
