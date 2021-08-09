@@ -565,7 +565,7 @@ console.log( sub10(5) ); // 결과 5, 어울리는 결과 -5
 ```
 <br/>
 
-#### curry ⏱
+#### curryr ⏱
 <br/>
 
 + 오른쪽부터 인자를 적용해나가는 curry right 함수
