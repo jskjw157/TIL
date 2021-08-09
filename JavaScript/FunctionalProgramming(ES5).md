@@ -672,3 +672,95 @@ function _each(list, iter) {
 for (var i = 0; i < list.length; i++) {
   function(list[i]){ new_list.push(function(b){return function(obj, key) {return obj == null ? undefined : obj[key] ;};});}
 } 
+```
+<br/>
+
+***
+
+<br/>
+
+### reduce ⏱
+<br/>
+
++ 축약하는 함수
+<br/>
+
++ 재귀함수
+<br/>
+
++ 원래 들어온 자료와 다른 축약된 새로운 자료를 만들기 위해 사용하는 함수
+<br/>
+
+```javascript
+
+var slice = Array.prototype.slice; // 배열의 메소드인 slice함수의 본연의 기능을 대입
+
+/* rest 함수 : 인자로 들어온 array_like를 array로 변환 후 slice 함수를 사용하는 함수 */
+
+function _rest(list, num) {
+  return slice.call(list, num || 1); // array가 아닌 array_like이여도 call함수로 사용할 수 있게 해줌
+} // 인자로 받은 num값의 수만큼 배열의 값을 제거 후 새로운 배열로 리턴
+
+
+function _reduce(list, iter, memo) {
+  if (arguments.length == 2 ) {
+      memo = list[0];
+      list = _rest(list);
+  }
+  _each(list, function(val) {
+    memo = iter(memo , val);
+  });
+  return memo;
+}
+
+
+console.log(
+  _reduce([1,2,3,4], function(a,b) {return a+b;}, 0)); //10
+
+//reduce 함수 내부
+/* memo = add(0,1);
+memo = add(memo, 2);
+memo = add(memo, 3);
+return memo;
+
+add(add(add(0,1),2),3); */
+
+console.log(
+  _reduce([1, 2, 3], add, 10)); // 16
+
+
+console.log(
+  _reduce([1, 2, 3], add)); // 6
+// add(add(1,2),3);
+
+console.log(
+  _reduce([1, 2, 3, 4], add, 10)); // 20
+```
+<br/>
+
+#### slice ⏱
+<br/>
+
++ 입력한 인자값의 수 만큼 배열의 맨앞의 값이 제외된 새로운 배열을 리턴하는 함수
+<br/>
+
+```javascript
+
+var a =[1,2,3];
+a.slice(1); // [2,3]
+a.slice(2); // [3]
+
+var a = document.querySelectorAll('*');
+a.slice(1); // array_like 이기 때문에 실행 오류
+
+var slice = Array.prototype.slice;
+slice.call(a,2);
+
+var a = { 0: 1, 1: 20, 2: 30, length: 3};
+slice.call(a,1);
+```
+<br/>
+
+***
+
+<br/>
