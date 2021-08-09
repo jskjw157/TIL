@@ -54,6 +54,7 @@
         console.log(add(10,5));
 
         /*순수함수가 아닌 함수는 평가시점이 중요하다. c가 변경 되기 전인가 변경 된 후인가가 중요.
+        
         순수함수는 평가시점에 따라 로직이 정해진다.*/
         var c = 10;
         function add2(a,b) {
@@ -69,7 +70,9 @@
         console.log(add2(10,7));
         
         /* 순수함수가 아닌 함수는 부수효과를 일으키는 함수. 
+        
         부수 효과는 외부의 상태를 변경하는것 또는 들어온 인자의 상태를 집적 변경하는것.
+        
         add3함수는 리턴값 외의 다른 방식으로 외부의 상태에 직접 관여하고 있다. */
         var c = 20;
         function add3(a,b) {
@@ -93,12 +96,17 @@
         console.log(obj1.val);
 
 
-        // 다시 순수 함수
-        // 객체를 다루는 순수 함수
-        // 원래있던 값을 그대로 두고, 새로운 값을 만들면서 원하는 값이 변형된 새로운 값을 리턴하는 방식
-        // add5함수는 obj1을 받아서 obj1.value를 참조만 할 뿐 값을 변경하는 부분은 없다.
-        // obj와 동일하게 생긴 새로운 객체를 리턴하면서, value의 해당하는 부분을 더해진 값으로 만들어서 리턴하고 있다.
-        // 인자로 받은 상태를 변경하지 않고, 외부의 상태도 변경하지 않고 있다.
+         /* 다시 순수 함수
+         
+         객체를 다루는 순수 함수
+         
+         원래있던 값을 그대로 두고, 새로운 값을 만들면서 원하는 값이 변형된 새로운 값을 리턴하는 방식
+         
+         add5함수는 obj1을 받아서 obj1.value를 참조만 할 뿐 값을 변경하는 부분은 없다.
+         
+         obj와 동일하게 생긴 새로운 객체를 리턴하면서, value의 해당하는 부분을 더해진 값으로 만들어서 리턴하고 있다.
+         
+         인자로 받은 상태를 변경하지 않고, 외부의 상태도 변경하지 않고 있다. */
         var obj1 = {val:10};
         function add5(obj, b) {
             return {val : obj.val +b}
@@ -421,9 +429,10 @@ console.log(document.querySelectorAll('*'));
 
 ```javascript
 
-//메소드는 해당클래스의 정의 되어 있기 때문에, 해당 클래스의 인스턴스가 아니면 사용할 수 없다.
-//array가 아닌 array_like 객체이기 때문에 map이라는 메소드가 준비 되어 있지 않다.
-// -> 실행결과 : 오류
+/* 메소드는 해당클래스의 정의 되어 있기 때문에, 해당 클래스의 인스턴스가 아니면 사용할 수 없다.
+
+array가 아닌 array_like 객체이기 때문에 map이라는 메소드가 준비 되어 있지 않다.
+ -> 실행결과 : 오류 */
 console.log(document.querySelectorAll('*').map(function(node){
   return node.nodeName
 })
@@ -444,8 +453,9 @@ console.log(document.querySelectorAll('*').map(function(node){
 
 ```javascript
 
-//querySelectorAll(array_like 객체)의 준비 되어있지 않은 Map(메소드)을 함수형 프로그래밍으로 전환해서 사용할 수 있다.
-//배열이 아니어도 length가 있고, length에 맞는 값들이 담겨저있는 key-value쌍의 객체라면 모두 동작이 가능하다.
+/* querySelectorAll(array_like 객체)의 준비 되어있지 않은 Map(메소드)을 함수형 프로그래밍으로 전환해서 사용할 수 있다.
+
+배열이 아니어도 length가 있고, length에 맞는 값들이 담겨저있는 key-value쌍의 객체라면 모두 동작이 가능하다. */
 console.log(
   _map(document.querySelectorAll('*'), function(node) {
     return node.nodeName;
