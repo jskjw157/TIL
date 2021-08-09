@@ -489,3 +489,103 @@ console.log(
 ***
 
 <br/>
+
+### curry and curryr 🎰
+<br/>
+
+#### curry ⏱
+<br/>
+
++  필요한 인자를 모두 채울 떄 까지, 인자를 적용해 나가다가 모든 인자 갯수가 채워지면 본래의 함수를 실행하는 함수
+<br/>
+
+```javascript
+
+// 삼항연산자 적용 전 curry 함수
+function _curry_(fn) {
+  return function (a, b) {
+      if (arguments.length == 2) return fn(a, b); // 입력받은 인자가 2개일 경우 fn함수를 바로 실행
+            return function (b) {
+              return fn(a, b);
+            }
+  }
+}
+
+
+// 삼항연산자 적용 후 curry 함수
+function _curry(fn){
+  return function(a,b){
+    return arguments.length == 2 ? fn(a,b) : function(b){ return fn(a,b);};
+    }
+}
+
+// curry 적용 전 일반함수
+var add_o = function(a,b) {
+  return a+b;
+}
+
+console.log( add_o(1, 2) );
+
+
+// curry 적용 함수 (덧셈)
+var add = _curry(function(a, b) {
+  return a + b;
+});
+
+var add10 = add(10);
+var add5 = add(5);
+console.log( add10(5) );
+console.log( add(5)(3) );
+console.log( add5(3) );
+console.log( add(10)(3) );
+
+//실행이 안되고 함수가 리턴
+console.log( add(1, 2) );
+
+
+// curry 적용 함수 (뺄셈)
+var sub = _curry(function(a,b) {
+  return a-b;
+});
+
+
+console.log( sub(10, 5) );
+
+
+
+/*  sub함수의 표현이 좋지 못하다.
+ 
+-> sub10 함수가 되었다는건, 들어오는 인자 5에 sub10 함수를 적용하는 것이다. 
+ 
+-> 그렇다면 5-10이 되어야 더 어울린다.
+ 
+-> 이경우에는 curryr 함수가 더 어울린다. */
+var sub10 = sub(10);
+console.log( sub10(5) ); // 결과 5, 어울리는 결과 -5
+```
+<br/>
+
+#### curry ⏱
+<br/>
+
++ 오른쪽부터 인자를 적용해나가는 curry right 함수
+<br/>
+
+```javascript
+
+function _curryr(fn) {
+  return function(a,b) {
+    return arguments.length == 2 ?  fn(a,b) : function(b){return fn(b,a);};
+  } 
+} 
+
+// curryr 적용 함수 (뺄셈)
+var sub = _curryr(function(a,b) {
+  return a-b;
+});
+
+var sub10 = sub(10);
+console.log( sub10(5) ); // 결과 -5
+```
+<br/>
+
