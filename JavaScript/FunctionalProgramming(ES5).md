@@ -751,7 +751,7 @@ a.slice(1); // [2,3]
 a.slice(2); // [3]
 
 var a = document.querySelectorAll('*');
-a.slice(1); // array_like 이기 때문에 실행 오류
+a.slice(1); // array_like라서 실행 오류
 
 var slice = Array.prototype.slice;
 slice.call(a,2);
