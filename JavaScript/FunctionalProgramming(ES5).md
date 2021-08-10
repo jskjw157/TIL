@@ -764,3 +764,6 @@ slice.call(a,1);
 ***
 
 <br/>
+
+### pipe ⏱
+<br/>
