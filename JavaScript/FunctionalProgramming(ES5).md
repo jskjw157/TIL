@@ -703,7 +703,7 @@ function _rest(list, num) {
 
 
 function _reduce(list, iter, memo) {
-  if (arguments.length == 2 ) {
+  if (arguments.length == 2 ) { // 받은 인자가 2개 일 경우  초기값(memo)에 값을 대입해주고, 그값을 배열에서 제거
       memo = list[0];
       list = _rest(list);
   }
