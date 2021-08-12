@@ -883,3 +883,36 @@ _go(users,
 ```
 <br/>
 
+***
+
+<br/>
+
+### arrow function ⏱
+<br/>
+
++ 화살표 함수 정리
+<br/>
+
+```javascript
+
+// 인자가 하나일 경우 : function과 return을 지우고, 소괄호, 중괄호를 지운다.
+var a = function(user) { return user.age >= 30; };
+var a = user => user.age >= 30;
+
+
+// 인자가 두개일 경우 : function과 return을 지우고, 중괄호를 지운다.
+var add = function(a, b) { return a + b; };
+var add = (a,b) => a + b;
+
+
+// 함수 내용이 많을경우 : 내용에 중괄호를 두른다.
+var add = (a, b) => {
+//  //
+//  return a + b;
+};
+
+
+// 객체를 생성해서 리턴하는데 한줄일 경우 : 객체 중괄호에 소괄호를 두른다.
+var add = (a, b) => ({ val: a + b });
+```
+<br/>
