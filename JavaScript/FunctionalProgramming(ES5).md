@@ -851,6 +851,7 @@ _go(users,
   },
   console.log);
 
+
 // go 함수 적용
 _go(users,
   function(users) { //users를 인자로 받아 사용
@@ -872,6 +873,7 @@ _go(users,
   _filter(function(user) { return user.age >= 30; }), // curryr함수를 적용 했기 때문, 인자를 하나 받아서  function(b){return fn(b,a);}를 리턴
   _map(_get('name')), // function(b){return fn(b,a);}를 리턴
   console.log);
+
 
 // 화살표 함수 적용
 _go(users,
