@@ -644,7 +644,7 @@ function _curryr(fn) {
   return function(a,b) {
     return arguments.length == 2 ?  fn(a,b) : function(b){return fn(b,a);};
   } 
-} function(a,b)인 _getr('name') 에서 받아오는 인자가 하나이기때문에 function(b){return fn(b,a);};가 실행되므로  
+} // function(a,b)인 _getr('name') 에서 받아오는 인자가 하나이기때문에 function(b){return fn(b,a);};가 실행되므로  
 fn(b,a)에 _get함수인 function(obj, key) {return obj == null ? undefined : obj[key] ;}가 대입
 
 -> function(b){return function(key, obj) {return obj == null ? undefined : obj[key] ;};} 
@@ -656,7 +656,7 @@ function _map(list, mapper) {
     new_list.push(mapper(val));
   });
   return new_list;
-} map 함수에서 mapper 값에 _getr('name')함수를 대입, 그 후 each함수의 function(val){new_list.push(mapper(val));}인자 에서 mapper안에 대입되서 실행
+} // map 함수에서 mapper 값에 _getr('name')함수를 대입, 그 후 each함수의 function(val){new_list.push(mapper(val));}인자 에서 mapper안에 대입되서 실행
     
 -> _each(list, function(val){ new_list.push(function(b){return function(obj, key) {return obj == null ? undefined : obj[key] ;};});})
 
@@ -666,7 +666,7 @@ function _each(list, iter) {
    iter(list[i]);
   }
  return list;
-} 에서 다시 iter함수에 대입 되고, iter에 list[i]를 인자로 받아 실행
+} // 에서 다시 iter함수에 대입 되고, iter에 list[i]를 인자로 받아 실행
     
 ->
 for (var i = 0; i < list.length; i++) {
