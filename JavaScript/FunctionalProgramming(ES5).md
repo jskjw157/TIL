@@ -645,7 +645,7 @@ function _curryr(fn) {
     return arguments.length == 2 ?  fn(a,b) : function(b){return fn(b,a);};
   } 
 } // function(a,b)인 _getr('name') 에서 받아오는 인자가 하나이기때문에 function(b){return fn(b,a);};가 실행되므로  
-fn(b,a)에 _get함수인 function(obj, key) {return obj == null ? undefined : obj[key] ;}가 대입
+// fn(b,a)에 _get함수인 function(obj, key) {return obj == null ? undefined : obj[key] ;}가 대입
 
 -> function(b){return function(key, obj) {return obj == null ? undefined : obj[key] ;};} 
 
