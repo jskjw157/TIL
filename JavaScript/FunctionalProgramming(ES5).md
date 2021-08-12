@@ -767,3 +767,117 @@ slice.call(a,1);
 
 ### pipe ⏱
 <br/>
+
++ 인자로 받은 함수들로 연속 실행할 수 있는 함수를 리턴하는 함수.
+<br/>
+
++ pipe는 reduce의 특화된 버전.
+<br/>
+
++ pipe는 redude로 함수들 이라는 배열을 통해서, 인자를 연속적으로 적용한 최종결과로 축약하는 함수.
+<br/>
+
++ pipe는 연속적으로 함수를 실행해줄때 사용하는 함수.
+<br/>
+
+```javascript
+
+function _pipe() {
+  var fns = arguments;
+  return function(arg) { //arg는 pipe함수 실행시 받아오는 인자값
+    return _reduce(fns, function(arg, fn) {return fn(arg);}, arg)
+  }
+}
+
+
+// 1. pipe 함수에 인자로 함수들을 대입.
+var f1 = _pipe(
+  function(a) { return a + 1; },
+  function(a) { return a * 2; },
+  function(a) { return a * a; });
+
+// 2. 함수들을 대입한 pipe함수(f1)에 인자로 일반적인 값을 대입.
+console.log( f1(1) );
+```
+<br/>
+
+### go ⏱
+<br/>
+
++ 즉시 실행되는 pipe 함수
+<br/>
+
++ 첫번째 인자는 일반적인 인자로 받고, 두번째 인자부터 함수들을 받아서 결과를 바로 만드는 함수
+<br/>
+
+```javascript
+
+function _go(arg) {
+  var fns = _rest(arguments);
+  return _pipe.apply(null, fns)(arg);
+}
+
+
+// go 적용 예
+_go(1,
+  function(a) { return a + 1; },
+  function(a) { return a * 2; },
+  function(a) { return a * a; },
+  console.log);
+
+
+/* users에 _go 적용 */
+
+
+// go 함수 적용 전
+console.log(
+  _map(
+    _filter(users, function(user) { return user.age >= 30; }),
+    _get('name')));
+
+console.log(
+  _map(
+    _filter(users, function(user) { return user.age < 30; }),
+    _get('age')));
+
+
+// go 함수 적용 후
+_go(users,
+  function(users) { //users를 인자로 받아 사용
+    return _filter(users, function(user) {return user.age >= 30;});
+  },
+  function(users){ //users를 인자로 받아 사용
+    return _map(users, _get('name'));
+  },
+  console.log);
+
+// go 함수 적용
+_go(users,
+  function(users) { //users를 인자로 받아 사용
+    return _filter(users, function(user) {return user.age < 30;});
+  },
+  function(users){ //users를 인자로 받아 사용
+    return _map(users, _get('age'));
+  },
+  console.log);
+  
+  
+  // map과 filter에 curryr함수 적용
+  var _map = _curryr(_map),
+    _filter = _curryr(_filter);
+
+
+// go함수에 curryr함수 가 적용된 map과 filter를 적용
+_go(users,
+  _filter(function(user) { return user.age >= 30; }), // curryr함수를 적용 했기 때문, 인자를 하나 받아서  function(b){return fn(b,a);}를 리턴
+  _map(_get('name')), // function(b){return fn(b,a);}를 리턴
+  console.log);
+
+// 화살표 함수 적용
+_go(users,
+  _filter(user => user.age < 30),
+  _map(_get('age')),
+  console.log);
+```
+<br/>
+
