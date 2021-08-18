@@ -916,3 +916,128 @@ var add = (a, b) => {
 var add = (a, b) => ({ val: a + b });
 ```
 <br/>
+
+***
+
+<br/>
+
+### 함수의 외부 다형성 높이기 📚
+<br/>
+
++ 함수에 null 값을 넣어도 에러가 안나고 흘려보내는 방식
+<br/>
+
+```javascript
+// cuuryr이 적용되어 있기 떄문에 _get함수에 lenght(key)값을 대입하고 그 뒤에 obj를 받는다.
+var _length = _get('length');
+
+
+//list.length -> _length(list)로 변경해서 list에 null값이 대입되도,
+//_get함수로 인해서 null값이 undefined값으로 변경되서 오류 발생 안함.
+function _each(list, iter) {
+    for (var i = 0; i <_length(list); i++) {
+        iter(list[i]);
+    }
+    return list;
+}
+
+
+// null 값이 대입대도 오류가 안남
+_each(null, console.log);
+console.log( _filter(null, function(v) { return v; }) );
+
+
+
+//_go 함수에 null값 적용 -> 오류 x, 빈배열이 나옴
+_go(null,
+  _filter(function(v){ return v % 2;}),
+  _map(function(v) {return v * v;}),
+  console.log);
+ ```
+<br/>
+
+### keys ⏱
+<br/>
+
++ object에서 key값만 뽑아주는 함수
+<br/>
+
+```javascript
+// Object.keys 함수
+console.log( Object.keys({ name: 'ID', age: 33 }) ); //["name", "age"]
+console.log( Object.keys([1, 2, 3, 4]) ); // ["0","1","2","3"]
+console.log( Object.keys(10) ); // []
+console.log( Object.keys(null) ); // !!!error
+
+
+//인자값이 Object 인지 검사하는 함수
+function _is_object(obj) {
+  return typeof obj == 'object' && !!obj; //!!는 다른 타입의 데이터를 boolean 타입으로 명시적으로 형 변환(Type Conversion)하기 위해 사용
+}
+
+
+//인자값이 Object인지 검사하여 맞으면 keys함수를 실행하고 아니면 빈 배열을 리턴하는 함수
+function _keys(obj){
+  return _is_object(obj) ? Object.keys(obj) : [];
+}
+
+
+// _keys함수 : null값이 대입되도 에러가 안남.
+console.log( _keys({ name: 'ID', age: 33 }) );
+console.log( _keys([1, 2, 3, 4]) );
+console.log( _keys(10) );
+console.log( _keys(null) );
+```
+<br/>
+
+#### each 외부 다형성 높이기 📕
+<br/>
+
+```javascript
+
+function _each(list, iter) {
+    var keys = _keys(list); // _keys함수를 이용해서 올바른 배열이나 빈 배열을 리턴
+
+    for (var i = 0; i <keys.length; i++) { // keys 변수에 올바른 배열이 할당되어서 length속성을 사용
+        iter(list[keys[i]]);
+    }
+    return list;
+}
+
+
+//객체인 LikeArray여도 _key함수를 사용해서 key값만 있는 올바른 배열을 생성하고, 그 배열로  each함수를 사용한다.  
+  _each({
+    13: 'ID',
+    19: 'HD',
+    29: 'YD'
+  }, function(name) {
+    console.log(name);
+  });
+
+  
+  //인자값으로 어떤 배열이 들어와도 유연하게 적용한다.
+  _go({
+      1: users[0],
+      3: users[2],
+      5: users[4]
+    },
+    _map(function(user) {
+      return user.name;
+    }),
+    _map(function(name) {
+      return name.toLowerCase();
+    }),
+    console.log);
+
+
+    // null 값이여도 빈배열을 리턴
+    _go(null,
+    _map(function(user) {
+      return user.name;
+    }),
+    _map(function(name) {
+      return name.toLowerCase();
+    }),
+    console.log);
+```
+<br/>
