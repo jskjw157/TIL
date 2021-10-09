@@ -1,4 +1,4 @@
-# API
+# API 📚
 <br/>
 
 ## API의 정의
@@ -24,7 +24,11 @@ app.get('/detail/:id', function (req, res) { // 이부분이 API
 ## API가 가져야할 내용
 <br/>
  
-+ (GET 요청)comic.naver.com/webtoon/detail?id=318995 => 1.요청방식(method)/2.무슨자료요청할지(endpoint)/3.파라미터(자료요청에 필요한 정보)
++ (GET 요청)comic.naver.com/webtoon/detail?id=318995 
+<br/>
+
++ => 1.요청방식(method)/2.무슨자료요청할지(endpoint)/3.파라미터(자료요청에 필요한 정보)
+<br/>
 
 ## API 종류
 <br/>
