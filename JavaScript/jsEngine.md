@@ -1,7 +1,7 @@
 # JS.engine 🎢
 <br/>
 
-## JavaScript 내부 동작 원리 📑
+## JavaScript 내부 동작 원리 📚
 <br/>
 
 ```js
@@ -21,19 +21,25 @@ console.log(3+3) //2번
 ```
 <br/>
 
-+ stack에서 코드를 한줄 한줄 실행하면서 변수를 만나면, heap의 공간에 채워 넣고 변수를 사용할 떄 마다 heap을 참조한다.
+### JavaScript 실행순서 📕
 <br/>
 
-+ 자바스크립트 stack(코드를 실행주는 곳)은 하나이다. (single threaded language)
+1. stack에서 코드를 한줄 한줄 실행하면서 변수를 만나면, heap의 공간에 채워 넣고 변수를 사용할 떄 마다 heap을 참조한다.
 <br/>
 
-+ 바로 실행이 안되는 코드들은 대기실로가서 대기된다.
+2. 자바스크립트 stack(코드를 실행주는 곳)은 하나이다. (single threaded language)
 <br/>
 
-+ 대기실에서 처리가 완료된 대기 코드들은 완료 순서대로 Queue로 옮겨 가게 된다.
+3. 바로 실행이 안되는 코드들은 대기실로가서 대기된다.
 <br/>
 
-+ stack에서 코드실행이 끝나서 stack이 비게되면, 큐에서 순서대로 stack으로 옮겨가서 실행된다. (FIFO = first in first out)
+4. 대기실에서 처리가 완료된 대기 코드들은 완료 순서대로 Queue로 옮겨 가게 된다.
+<br/>
+
+5. stack에서 코드실행이 끝나서 stack이 비게되면, 큐에서 순서대로 stack으로 옮겨가서 실행된다. (FIFO = first in first out)
+<br/>
+
+### JavaScript engine 특징 📗
 <br/>
 
 + 10초 이상 걸리는 어려운 연산 코드가(ex : for 반복문안에 어려운 연산) 있으면, stack이 차있으므로 버튼클릭이나 타이머 코드는 계속 대기하게 되서 작동이 안된다.
