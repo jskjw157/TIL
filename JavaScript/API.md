@@ -19,8 +19,36 @@ app.get('/detail/:id', function (req, res) { // 이부분이 API
  })
  
  ```
- <br/>
+<br/>
  
+## API 적용 예시(JS fetch API)
+<br/>
+
+```js
+fetch("hi.txt").then(function(response) {
+  response.text().then(function(text) {
+    alert(text)
+  })
+ })
+```
+<br/>
+
+```txt
+/* hi.txt 파일 */
+
+{ "id" : "ksdf223", "name" : "gildong:} //json형식 객체
+```
+<br/>
+
+```js
+fetch("hi.json").then(function(response) {
+  response.text().then(function(text) {
+    alert(text)
+  })
+ })
+```
+<br/>
+
 ## API가 가져야할 내용
 <br/>
  
