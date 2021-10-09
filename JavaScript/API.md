@@ -36,16 +36,36 @@ fetch("hi.txt").then(function(response) {
 ```txt
 /* hi.txt 파일 */
 
-{ "id" : "ksdf223", "name" : "gildong:} //json형식 객체
+{ "id" : "ksdf223", "name" : "gildong:} //json형식(자바스크립트 객체 형식)
 ```
 <br/>
 
 ```js
 fetch("hi.json").then(function(response) {
-  response.text().then(function(text) {
-    alert(text)
+  
+  response.json().then(function(data) {
+    console.log(data.id)
+    console.log(data.name)
   })
  })
+```
+<br/>
+
+🔻🔻🔻
+
+<br/>
+
+```js
+fetch("hi.json").then(function(response) {
+  
+ return response.json()
+ 
+}).then(function(data) {
+
+  return data.id
+}).then(function(data) {
+  console.log(data)
+})
 ```
 <br/>
 
