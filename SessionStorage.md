@@ -28,3 +28,13 @@ while session storage is better suited for temporarily storing data that needs t
 구현: 세션 스토리지와 로컬 스토리지는 모두 JavaScript API를 사용하여 구현되며 키-값 쌍으로 데이터를 저장합니다.
 
 결론적으로 로컬 스토리지는 여러 세션에 걸쳐 유지되어야 하는 데이터를 저장하는 데 더 적합한 반면, 세션 스토리지는 사용자의 세션 중에 유지되어야 하는 데이터를 일시적으로 저장하는 데 더 적합합니다.
+
+
+## 메서드와 속성
+
+* setItem(key, value) – 키-값 쌍을 보관합니다.
+* getItem(key) – 키에 해당하는 값을 받아옵니다.
+* removeItem(key) – 키와 해당 값을 삭제합니다.
+* clear() – 모든 것을 삭제합니다.
+* key(index) – 인덱스(index)에 해당하는 키를 받아옵니다.
+* length – 저장된 항목의 개수를 얻습니다
