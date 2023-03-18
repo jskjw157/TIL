@@ -1,6 +1,6 @@
 # SQL vs NoSQL ⚽
 
-![Sql_Nosql.jpg](SQL%20vs%20NoSQL%20%E2%9A%BD%208c003b5d989d41ad9d44dcd920c97e13/Sql_Nosql.jpg)
+<img src="../../Img/Node_V8.jpg" width="800px"/>
 
 ## SQL (관계형DB) 📋
 
@@ -31,7 +31,7 @@ NoSql은 Sql과 달리 관계형 데이터베이스가 아닌, 비관계형 데�
 NoSql은 분산 처리에 적합하며, 대용량 데이터 처리에 높은 성능을 보인다. 
 또한, NoSql은 강한 데이터 스키마가 없고 유연한 스키마를 사용하므로 데이터 처리의 유연성이 높다. 하지만, 데이터의 일관성과 무결성을 보장하지 않으며, ACID 특성을 갖추지 않는다.
 
-![Nosql3.jpg](SQL%20vs%20NoSQL%20%E2%9A%BD%208c003b5d989d41ad9d44dcd920c97e13/Nosql3.jpg)
+<img src="../../Img/Node_V8.jpg" width="800px"/>
 
 ### NoSql의 장단점 🖋
 
