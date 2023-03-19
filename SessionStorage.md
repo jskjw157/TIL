@@ -1,20 +1,3 @@
-Session storage and local storage are both types of web storage that allow you to store data on a user's browser, 
-but they have some differences:
-
-1. Duration of storage: Local storage stores data permanently, even after the user closes their browser or navigates away from your website. 
-Session storage, on the other hand, only stores data while the user has an active session with your website, 
-and the data is cleared when the user closes their browser or navigates away from your website.
-
-2. Size of storage: Local storage has a larger size limit than session storage, which allows you to store more data.
-
-3. Data sharing: Local storage data is accessible to all windows or tabs from the same origin (i.e., website), 
-while session storage data is limited to the current window or tab.
-
-4. Implementation: Both session storage and local storage are implemented using JavaScript APIs and store data in key-value pairs.
-
-In conclusion, local storage is better suited for storing data that needs to persist across multiple sessions, 
-while session storage is better suited for temporarily storing data that needs to persist during a user's session.
-
 
 
 세션 저장소와 로컬 저장소는 모두 사용자의 브라우저에 데이터를 저장할 수 있는 웹 저장소 유형이지만 다음과 같은 차이점이 있습니다:
