@@ -4,7 +4,7 @@
 
 노트북을 새로 사서 환경설정을 다시 하던 도중…😂  vscode 터미널에서 nest를 설치하려니…
 
-![Untitled](%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3%20%E1%84%87%E1%85%A9%E1%84%8B%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%A9%E1%84%85%E1%85%B2%20PSSecurity%20Exception%2009fa5922b89c4c6787358433a17b14df/Untitled.png)
+<img src="../Img/script.png" width="800px"/>
 
 PSSecurityException 에러 발생..!
 
@@ -17,11 +17,11 @@ Windows에서 PowerShell을 악성 스크립트의 실행을 방지하기 위해
 
 이런 단순한 방법이…🤣  이래서 메타정보가 중요한 건가..?! ~~mac 사고 싶다 휴..~~
 
-![Untitled](%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3%20%E1%84%87%E1%85%A9%E1%84%8B%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%A9%E1%84%85%E1%85%B2%20PSSecurity%20Exception%2009fa5922b89c4c6787358433a17b14df/Untitled%201.png)
+<img src="../Img/script1.png" width="800px"/>
 
 위에 그림처럼 VScode 내에서 다른 터미널로 접속 가능하며 난 git bash를 사용해서 해결했다.
 
-![Untitled](%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3%20%E1%84%87%E1%85%A9%E1%84%8B%E1%85%A1%E1%86%AB%20%E1%84%8B%E1%85%A9%E1%84%85%E1%85%B2%20PSSecurity%20Exception%2009fa5922b89c4c6787358433a17b14df/Untitled%202.png)
+<img src="../Img/script2.png" width="800px"/>
 
 ~~큭큭.. 간단하구만…~~ 
 
