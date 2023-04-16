@@ -1,12 +1,5 @@
 # 스크립트 보안 오류 PSSecurity Exception
 
-날짜: 2023년 4월 16일
-생성 일시: 2023년 4월 16일 오후 8:57
-생성자: oduckProgrammer 
-최종 편집 일시: 2023년 4월 16일 오후 10:18
-최종 편집자: oduckProgrammer 
-태그: Powershell, 보안
-
 ## 오늘 공부한 내용 ✏
 
 노트북을 새로 사서 환경설정을 다시 하던 도중…😂  vscode 터미널에서 nest를 설치하려니…
@@ -70,11 +63,13 @@ PowerShell 실행 정책은 공식문서에 아주 잘 나와있지만 혹시 �
 💡 유효한 실행 정책을 확인하는 명령어: Get-ExecutionPolicy
 
 </aside>
-
+</br>
 <aside>
 💡 실행 정책을 변경하는 명령어: Set-ExecutionPolicy -ExecutionPolicy <PolicyName>
 
 </aside>
+</br>
+</br>
 
 실행 정책을 변경해도 되지만, 일단 보안상으로는 그대로 두는 것이 더 안전하다고 생각했다.
 
